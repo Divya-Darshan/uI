@@ -8,8 +8,8 @@ This is a **UI clone** project built for educational and portfolio purposes. The
 
 ## 📸 Demo Preview
 
-![UI Clone Preview](img/edge.jpg)
-![UI Clone Preview](img/google.png)
+![UI Clone Preview](demo/edge.png)
+![UI Clone Preview](demo/google.png)
 
 > Replace the above image with a screenshot or screen recording of your clone. Make sure it has a landscape (wide) format to look best.
 
