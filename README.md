@@ -31,7 +31,8 @@ This is a **UI clone** project built for educational and portfolio purposes. The
 📂 uI
 ├── 📁 img
 │   └── preview.png
-│
+├── 📁 demo
+│   └── preview.png
 ├── index.html
 ├── style.css
 ├── script.js / App.jsx
