@@ -35,7 +35,6 @@ This is a **UI clone** project built for educational and portfolio purposes. The
 │   └── preview.png
 ├── index.html
 ├── style.css
-├── script.js / App.jsx
 └── README.md
 
 ```
