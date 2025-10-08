@@ -54,6 +54,6 @@ This is a **UI clone** project built for educational and portfolio purposes. The
 
 ```bash
 
-git clone https://github.com/Divya-Darshan/uI.git
+git clone https://github.com/Divya-Darshan/ui.git
 
 ```
