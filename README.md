@@ -10,7 +10,7 @@ This is a **UI clone** project built for educational and portfolio purposes. The
 
 ![UI Clone Preview](demo/edge.png)
 ![UI Clone Preview](demo/google.png)
-
+![UI Clone Preview](demo/image.png)
 
 
 ---
